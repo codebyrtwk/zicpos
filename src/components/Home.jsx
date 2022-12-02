@@ -6,21 +6,28 @@ import { useState,useEffect } from 'react';
 
 
 function Home() {
-  
+  // const timer = setTimeout(function(){countDownObj.count(i - 1);},pause);
   const [count, setCount] = useState(10);
   const currentCount = count
+  // password = "password";
   const startTimer = () => {
+    
     const timer = setInterval(() => {
         setCount(count => {
           if (count !== 0) return count-1;
           clearInterval(timer);
           if(count === 0  ){
-            alert("HIII");
+            alert("Your Time has been exhausted");
             setCount(10)
-            const quit = document.getElementById("quit")
-            // quit.style.display = "none";
-            quit.click();
-          }
+            // const quit = document.getElementById("quit")
+            // // quit.style.display = "none";
+            // quit.click();
+            document.getElementById("quit").style.display = "none";
+            document.getElementById("abc").style.display = "block";
+            document.getElementById("text").style.color = "white";
+            document.getElementById("button").style.display = "block";
+            document.getElementById("text2").style.display= "none";
+                     }
           return count;
           
       } )
@@ -30,54 +37,20 @@ function Home() {
     document.getElementById("text").style.color = "black";
     document.getElementById("button").style.display = "none";
     document.getElementById("text2").style.display= "block";
-    
-
-    
+   
 }
 // const currentCount = count
   const quitTimer = () => {
-    clearInterval(setCount(0));
+    if(count > 0) {
+      setCount(count)
+    }
     document.getElementById("quit").style.display = "none";
     document.getElementById("abc").style.display = "block";
     document.getElementById("text").style.color = "white";
     document.getElementById("button").style.display = "block";
     document.getElementById("text2").style.display= "none";
-
-    
-
-    
+ 
 }
-
-//set count to current count
-//resume the timer on click event
-
-            
-
-
-
-    
-
-    
-
-
-
-  // const decrement = () => {
-  //   setCount(count - 1);
-  //   //change style of elements
-    
-    
-    
-  // }
-
-  // const 
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCount(count-1);
-  //   }, count);
-  //   return () => clearInterval(interval);
-  //   // eslint-disable-next-line
-  //   }, []);
 
 
 return (
@@ -100,7 +73,7 @@ return (
 			
 		</div>
     <h2>Timer</h2>
-    <p >{currentCount} Minutes remaining</p>
+    <p id = "counter">{currentCount} Minutes remaining</p>
     <p>out of 10</p>
 
 
@@ -113,8 +86,12 @@ return (
   <p id = "text">ENTER YOUR PIELEARNIG PASSWORD </p>
   <p id = "text2">WELCOME TO THE LAB</p>
   </div>
+  <form >
   <div  id = "abc"class = "centeredI"><input type="password"/></div>
   <div id = "button"class = "centeredButton"><button type="button" onClick={startTimer } o >Enter Lab</button></div>
+
+  </form>
+  
   <div id = "quit"class = "centeredButton"><button type="button" onClick = {quitTimer} o>Quit Lab</button></div>
   
 

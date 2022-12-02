@@ -14,33 +14,45 @@ function Home() {
         setCount(count => {
           if (count !== 0) return count-1;
           clearInterval(timer);
+          if(count === 0  ){
+            alert("HIII");
+            setCount(10)
+            const quit = document.getElementById("quit")
+            // quit.style.display = "none";
+            quit.click();
+          }
           return count;
+          
       } )
-        //stop the timer at 0
-        if(count ===0){
-        return () => clearInterval(timer);
-        }
-        
-
     }, 1000)
     document.getElementById("quit").style.display = "block";
     document.getElementById("abc").style.display = "none";
     document.getElementById("text").style.color = "black";
     document.getElementById("button").style.display = "none";
+    document.getElementById("text2").style.display= "block";
+    
+
+    
+}
+// const currentCount = count
+  const quitTimer = () => {
+    clearInterval(setCount(0));
+    document.getElementById("quit").style.display = "none";
+    document.getElementById("abc").style.display = "block";
+    document.getElementById("text").style.color = "white";
+    document.getElementById("button").style.display = "block";
+    document.getElementById("text2").style.display= "none";
+
+    
 
     
 }
 
 //set count to current count
-const quitTimer =() => {
+//resume the timer on click event
 
-  clearInterval(setInterval(count=>currentCount))
-  document.getElementById("quit").style.display = "none";
-    document.getElementById("abc").style.display = "block";
-    document.getElementById("text").style.color = "white";
-    document.getElementById("button").style.display = "block";
+            
 
-}
 
 
     
@@ -99,6 +111,7 @@ return (
   <div class = "centered">
   <img class = "centeredImg"src="https://th.bing.com/th/id/R.ed1a1eed81db22b493516d3e5c0ef3d6?rik=Id5kPf%2fE47TsEQ&riu=http%3a%2f%2fbackgroundcheckexpress.com%2fuploads%2fimages%2ffingerprint-icon.png&ehk=Y7ylQudh%2bE%2b1wgODjzKdn0ivCMaILqGj7K7qEjUSLeg%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" alt="fingerprint" />
   <p id = "text">ENTER YOUR PIELEARNIG PASSWORD </p>
+  <p id = "text2">WELCOME TO THE LAB</p>
   </div>
   <div  id = "abc"class = "centeredI"><input type="password"/></div>
   <div id = "button"class = "centeredButton"><button type="button" onClick={startTimer } o >Enter Lab</button></div>
